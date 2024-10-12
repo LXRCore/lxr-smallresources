@@ -2,74 +2,71 @@
 
 ### Part of the **LXRCore** RedM Framework
 
-Welcome to **LXR-SmallResources**, a collection of lightweight and essential resource scripts designed to complement the **LXRCore** RedM Framework. These scripts are optimized for performance and flexibility, ensuring they integrate seamlessly with your RedM server setup.
+Welcome to **LXR-SmallResources**, an essential resource pack designed to provide lightweight, high-performance utilities for the **LXRCore** RedM Framework. This all-in-one resource includes various features that improve the roleplay experience and enhance both player and admin functionality on RedM servers.
 
 ## Overview
 
-LXR-SmallResources provides small but essential utilities that enhance the roleplay experience and offer useful features for server admins and players alike. These scripts are designed to work out of the box with the LXRCore framework, but can also be adapted for use with other frameworks.
+LXR-SmallResources is designed as a complete set of essential tools and features, packaged into a single, efficient resource. By integrating these features into one resource, server owners can reduce the number of separate scripts running on their server, leading to better performance and easier management.
 
 ### Key Features
-- **Lightweight Scripts:** Each script is designed to be as resource-efficient as possible, ensuring smooth server performance.
-- **Plug-and-Play:** Easily integrate any of the small resources into your server with minimal configuration.
-- **Modular:** Use only the scripts you need; each resource is standalone and can be added or removed individually.
-- **Compatibility:** Designed to work seamlessly with LXRCore, but adaptable to other RedM frameworks.
-- **Regular Updates:** Continuously maintained to ensure compatibility with new RedM updates and improvements to the LXRCore framework.
+- **Unified Resource:** All essential tools and features are bundled into one resource for ease of installation and management.
+- **Lightweight:** Optimized for minimal impact on server performance, ensuring smooth gameplay for all players.
+- **Modular Configuration:** Easily enable or disable individual features through the configuration file, tailoring the resource to your server’s needs.
+- **Seamless Integration:** Designed to work flawlessly with the LXRCore framework, but flexible enough to be adapted to other setups.
 
-## Included Resources
+## Included Features
 
-### 1. `LXR-WeatherSync`
-This resource syncs weather conditions across all players, ensuring a consistent atmospheric experience for everyone.
+### 1. **Weather Synchronization**
+Ensures consistent weather conditions across all players for an immersive, atmospheric experience.
 
-### 2. `LXR-HudEnhancer`
-A minimalist HUD script to enhance the user interface without cluttering the screen. Provides essential stats such as health, hunger, and thirst in a clean and compact design.
+### 2. **HUD Enhancements**
+A minimalist, clean HUD displaying vital player stats such as health, stamina, hunger, thirst, and more, all without cluttering the screen.
 
-### 3. `LXR-AFKKick`
-A simple anti-AFK script that kicks idle players after a configurable timeout, keeping the server active and preventing ghost players from taking up server slots.
+### 3. **AFK Management**
+Automatically detects and manages inactive players, removing them from the server after a configurable timeout to free up server slots.
 
-### 4. `LXR-Notifications`
-A customizable notification system that provides in-game alerts and messages in a stylish and non-intrusive manner.
+### 4. **Notifications System**
+Provides in-game alerts and notifications in a clean, customizable format, allowing admins and players to communicate effectively with minimal disruption.
 
-### 5. `LXR-Compass`
-Adds a customizable, on-screen compass to improve navigation without breaking immersion. Includes options for cardinal directions, custom markers, and more.
+### 5. **Compass and Navigation**
+Includes an on-screen compass for player orientation, with optional features for cardinal directions and custom markers.
 
-### 6. `LXR-Teleport`
-A simple and efficient teleport system for admins and players with permission. Use preset teleport locations or set your own custom points.
+### 6. **Teleport System**
+A simple and intuitive teleport feature for admins and players with the necessary permissions, allowing quick travel to preset or custom locations.
+
+### 7. **Admin Tools**
+Built-in utilities for server admins, including basic management tools for kicking, teleporting, and messaging players, all easily accessible and configurable.
 
 ## Installation
 
-1. **Download** the desired resources from the repository or clone the repository to your local machine:
+1. **Download** the resource from the repository or clone the repository to your local machine:
    ```
    git clone https://github.com/LXRCore/LXR-SmallResources.git
    ```
 
-2. **Add the resources** to your RedM server's `resources` folder.
+2. **Add the resource** to your RedM server's `resources` folder.
 
-3. **Ensure** the resources are listed in your `server.cfg` file:
+3. **Ensure** the resource is listed in your `server.cfg` file:
    ```plaintext
-   ensure LXR-WeatherSync
-   ensure LXR-HudEnhancer
-   ensure LXR-AFKKick
-   ensure LXR-Notifications
-   ensure LXR-Compass
-   ensure LXR-Teleport
+   ensure LXR-SmallResources
    ```
 
-4. **Configure** each resource as needed by editing the configuration files located in each resource folder.
+4. **Configure** the resource as needed by editing the `config.lua` file.
 
 5. **Restart** your server to apply the changes.
 
 ## Configuration
 
-Each resource comes with a `config.lua` file that allows for easy customization. Check the documentation within each resource for specific configuration options.
+LXR-SmallResources is highly configurable. The `config.lua` file allows you to enable or disable specific features, set custom values, and tailor the resource to meet the specific needs of your server. Each feature is clearly documented in the config file for ease of use.
 
 ## Requirements
 
-- **RedM**: The LXR-SmallResources package is designed to work on RedM roleplay servers.
-- **LXRCore (Optional)**: While not mandatory, these scripts are optimized for use with the LXRCore framework.
+- **RedM**: LXR-SmallResources is designed to work on RedM roleplay servers.
+- **LXRCore (Optional)**: The resource is optimized for use with the LXRCore framework but can be adapted for other setups.
 
 ## Contribution
 
-We welcome contributions to improve and expand the LXR-SmallResources collection. Feel free to submit pull requests or open issues with any suggestions or improvements.
+We welcome contributions to improve LXR-SmallResources. If you have any suggestions, improvements, or bug fixes, feel free to submit a pull request or open an issue.
 
 ## License
 
