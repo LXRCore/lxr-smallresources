@@ -1,5 +1,25 @@
--- Drinks
-for k in pairs(ConsumeablesDrink) do
+--[[
+    ██╗     ██╗  ██╗██████╗        ██████╗ ██████╗ ██████╗ ███████╗
+    ██║     ╚██╗██╔╝██╔══██╗      ██╔════╝██╔═══██╗██╔══██╗██╔════╝
+    ██║      ╚███╔╝ ██████╔╝█████╗██║     ██║   ██║██████╔╝█████╗
+    ██║      ██╔██╗ ██╔══██╗╚════╝██║     ██║   ██║██╔══██╗██╔══╝
+    ███████╗██╔╝ ██╗██║  ██║      ╚██████╗╚██████╔╝██║  ██║███████╗
+    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝       ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+    🐺 LXR Core - Small Resources | Consumables (Server)
+    Registers useable items for food, drink, alcohol, cigarettes, cigars, and dual-wield.
+
+    ═══════════════════════════════════════════════════════════════════════════════
+    Server:    The Land of Wolves 🐺
+    Developer: iBoss21 / The Lux Empire
+    Website:   https://www.wolves.land
+    Discord:   https://discord.gg/CrKcWdfd3A
+    Store:     https://theluxempire.tebex.io
+    ═══════════════════════════════════════════════════════════════════════════════
+    © 2026 iBoss21 / The Lux Empire | wolves.land | All Rights Reserved
+]]
+
+
     exports['lxr-core']:CreateUseableItem(k, function(source, item)
         local Player = exports['lxr-core']:GetPlayer(source)
         if Player.Functions.RemoveItem(item.name, 1, item.slot) then

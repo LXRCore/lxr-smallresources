@@ -1,38 +1,25 @@
+--[[
+    ██╗     ██╗  ██╗██████╗        ██████╗ ██████╗ ██████╗ ███████╗
+    ██║     ╚██╗██╔╝██╔══██╗      ██╔════╝██╔═══██╗██╔══██╗██╔════╝
+    ██║      ╚███╔╝ ██████╔╝█████╗██║     ██║   ██║██████╔╝█████╗
+    ██║      ██╔██╗ ██╔══██╗╚════╝██║     ██║   ██║██╔══██╗██╔══╝
+    ███████╗██╔╝ ██╗██║  ██║      ╚██████╗╚██████╔╝██║  ██║███████╗
+    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝       ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
+    🐺 LXR Core - Small Resources | Discord Logging (Server)
+    Sends structured Discord webhook embeds for server activity logging.
+    Webhooks are configured in Config.Webhooks inside config.lua.
 
-local Webhooks = {
-    ['default'] = '',
-    ['testwebhook'] = '',
-    ['playermoney'] = '',
-    ['playerinventory'] = '',
-    ['robbing'] = '',
-    ['cuffing'] = '',
-    ['drop'] = '',
-    ['trunk'] = '',
-    ['stash'] = '',
-    ['glovebox'] = '',
-    ['banking'] = '',
-    ['vehicleshop'] = '',
-    ['vehicleupgrades'] = '',
-    ['shops'] = '',
-    ['dealers'] = '',
-    ['storerobbery'] = '',
-    ['bankrobbery'] = '',
-    ['powerplants'] = '',
-    ['death'] = '',
-    ['joinleave'] = '',
-    ['ooc'] = '',
-    ['report'] = '',
-    ['me'] = '',
-    ['pmelding'] = '',
-    ['112'] = '',
-    ['bans'] = '',
-    ['anticheat'] = '',
-    ['weather'] = '',
-    ['bossmenu'] = '',
-    ['robbery'] = '',
-    ['house'] = '',
-}
+    ═══════════════════════════════════════════════════════════════════════════════
+    Server:    The Land of Wolves 🐺
+    Developer: iBoss21 / The Lux Empire
+    Website:   https://www.wolves.land
+    Discord:   https://discord.gg/CrKcWdfd3A
+    Store:     https://theluxempire.tebex.io
+    ═══════════════════════════════════════════════════════════════════════════════
+    © 2026 iBoss21 / The Lux Empire | wolves.land | All Rights Reserved
+]]
+
 
 local Colors = { -- https://www.spycolor.com/
     ['default'] = 14423100,
@@ -49,21 +36,22 @@ local Colors = { -- https://www.spycolor.com/
 
 RegisterNetEvent('lxr-log:server:CreateLog', function(name, title, color, message, tagEveryone, tagUser)
     local tagEveryone = tagEveryone or false
-    local tagUser = tagUser or nil -- New variable to tag specific users
-    local webHook = Webhooks[name] or Webhooks['default']
-    
+    local tagUser = tagUser or nil
+    local webHook = Config.Webhooks[name] or Config.Webhooks['default']
+
     -- Construct the embed message
     local embedData = {
         {
             ['title'] = title,
             ['color'] = Colors[color] or Colors['default'],
             ['footer'] = {
-                ['text'] = os.date('%c'),
+                ['text'] = os.date('%c') .. ' | 🐺 wolves.land',
             },
             ['description'] = message,
             ['author'] = {
-                ['name'] = 'LXRCore Logs',
-                ['icon_url'] = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670',
+                ['name'] = '🐺 The Land of Wolves | LXR Logs',
+                ['icon_url'] = 'https://www.wolves.land/assets/logo.png',
+                ['url'] = 'https://www.wolves.land',
             },
             ['fields'] = {
                 {
@@ -85,7 +73,7 @@ RegisterNetEvent('lxr-log:server:CreateLog', function(name, title, color, messag
         if err ~= 200 then
             print('Error sending webhook: ' .. err)
         end
-    end, 'POST', json.encode({ username = 'LXR Logs', embeds = embedData }), { ['Content-Type'] = 'application/json' })
+    end, 'POST', json.encode({ username = '🐺 LXR Logs | wolves.land', embeds = embedData }), { ['Content-Type'] = 'application/json' })
 
     -- Wait briefly before sending additional messages (if any)
     Wait(100)
@@ -97,43 +85,14 @@ RegisterNetEvent('lxr-log:server:CreateLog', function(name, title, color, messag
             if err ~= 200 then
                 print('Error sending webhook: ' .. err)
             end
-        end, 'POST', json.encode({ username = 'LXR Logs', content = content }), { ['Content-Type'] = 'application/json' })
+        end, 'POST', json.encode({ username = '🐺 LXR Logs | wolves.land', content = content }), { ['Content-Type'] = 'application/json' })
     end
 end)
 
--- Improved webhook test command
+-- Webhook test command
 exports['lxr-core']:AddCommand('testwebhook', 'Test Your Discord Webhook For Logs (God Only)', {
     {'tag', 'Tag a user with ID', false}
 }, false, function(source, args)
-    local tagUser = tonumber(args[1]) or nil -- Allow user tagging in the test command
+    local tagUser = tonumber(args[1]) or nil
     TriggerEvent('lxr-log:server:CreateLog', 'testwebhook', 'Test Webhook', 'default', 'Webhook setup successfully', false, tagUser)
 end, 'god')
-
---[[ webhook old
-RegisterNetEvent('lxr-log:server:CreateLog', function(name, title, color, message, tagEveryone)
-    local tag = tagEveryone or false
-    local webHook = Webhooks[name] or Webhooks['default']
-    local embedData = {
-        {
-            ['title'] = title,
-            ['color'] = Colors[color] or Colors['default'],
-            ['footer'] = {
-                ['text'] = os.date('%c'),
-            },
-            ['description'] = message,
-            ['author'] = {
-                ['name'] = 'LXRCore Logs',
-                ['icon_url'] = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670',
-            },
-        }
-    }
-    PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = 'LXR Logs', embeds = embedData}), { ['Content-Type'] = 'application/json' })
-    Wait(100)
-    if not tag then return end
-    PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = 'LXR Logs', content = '@everyone'}), { ['Content-Type'] = 'application/json' })
-end)
-
-exports['lxr-core']:AddCommand('testwebhook', 'Test Your Discord Webhook For Logs (God Only)', {}, false, function(source, args)
-    TriggerEvent('lxr-log:server:CreateLog', 'testwebhook', 'Test Webhook', 'default', 'Webhook setup successfully')
-end, 'god')
-]]--
