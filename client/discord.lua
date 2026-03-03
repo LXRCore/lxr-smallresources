@@ -1,36 +1,40 @@
--- To Set This Up visit https://forum.cfx.re/t/how-to-updated-discord-rich-presence-custom-image/157686
+--[[
+    ██╗     ██╗  ██╗██████╗        ██████╗ ██████╗ ██████╗ ███████╗
+    ██║     ╚██╗██╔╝██╔══██╗      ██╔════╝██╔═══██╗██╔══██╗██╔════╝
+    ██║      ╚███╔╝ ██████╔╝█████╗██║     ██║   ██║██████╔╝█████╗
+    ██║      ██╔██╗ ██╔══██╗╚════╝██║     ██║   ██║██╔══██╗██╔══╝
+    ███████╗██╔╝ ██╗██║  ██║      ╚██████╗╚██████╔╝██║  ██║███████╗
+    ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝       ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+    🐺 LXR Core - Small Resources | Discord Rich Presence (Client)
+    Sets up Discord Rich Presence with wolves.land branding.
+    Configure Discord App ID and assets at: https://discord.com/developers/applications
+
+    ═══════════════════════════════════════════════════════════════════════════════
+    Server:    The Land of Wolves 🐺
+    Developer: iBoss21 / The Lux Empire
+    Website:   https://www.wolves.land
+    Discord:   https://discord.gg/CrKcWdfd3A
+    Store:     https://theluxempire.tebex.io
+    ═══════════════════════════════════════════════════════════════════════════════
+    © 2026 iBoss21 / The Lux Empire | wolves.land | All Rights Reserved
+]]
 
 CreateThread(function()
-    -- This is the Application ID (Replace this with you own)
-    SetDiscordAppId()
+    SetDiscordAppId(Config.Discord.appId)
 
-    -- Here you will have to put the image name for the "large" icon.
-    SetDiscordRichPresenceAsset('logo_name')
+    SetDiscordRichPresenceAsset(Config.Discord.largeAsset)
+    SetDiscordRichPresenceAssetText(Config.Discord.largeText)
 
-    -- (11-11-2018) New Natives:
+    SetDiscordRichPresenceAssetSmall(Config.Discord.smallAsset)
+    SetDiscordRichPresenceAssetSmallText(Config.Discord.smallText)
 
-    -- Here you can add hover text for the "large" icon.
-    SetDiscordRichPresenceAssetText('This is a lage icon with text')
+    SetRichPresence('Players: ' .. GlobalState['Count:Players'] .. '/' .. Config.Discord.maxPlayers)
 
-    -- Here you will have to put the image name for the "small" icon.
-    SetDiscordRichPresenceAssetSmall('logo_name')
-
-    -- Here you can add hover text for the "small" icon.
-    SetDiscordRichPresenceAssetSmallText('This is a lsmall icon with text')
-
-    SetRichPresence('Players: '..GlobalState['Count:Players']..'/64')
-
-    -- (26-02-2021) New Native:
-
-    --[[
-        Here you can add buttons that will display in your Discord Status,
-        First paramater is the button index (0 or 1), second is the title and
-        last is the url (this has to start with "fivem://connect/" or "https://")
-    ]]--
-    SetDiscordRichPresenceAction(0, "First Button!", "fivem://connect/localhost:30120")
-    SetDiscordRichPresenceAction(1, "Second Button!", "fivem://connect/localhost:30120")
+    SetDiscordRichPresenceAction(0, Config.Discord.buttons[1].label, Config.Discord.buttons[1].url)
+    SetDiscordRichPresenceAction(1, Config.Discord.buttons[2].label, Config.Discord.buttons[2].url)
 end)
 
 AddStateBagChangeHandler('Count:Players', 'global', function(_, _, playerCount)
-    SetRichPresence('Players: '..playerCount..'/64')
+    SetRichPresence('Players: ' .. playerCount .. '/' .. Config.Discord.maxPlayers)
 end)
