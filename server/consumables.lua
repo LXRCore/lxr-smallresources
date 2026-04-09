@@ -20,6 +20,7 @@
 ]]
 
 
+for k in pairs(ConsumeablesDrink) do
     exports['lxr-core']:CreateUseableItem(k, function(source, item)
         local Player = exports['lxr-core']:GetPlayer(source)
         if Player.Functions.RemoveItem(item.name, 1, item.slot) then

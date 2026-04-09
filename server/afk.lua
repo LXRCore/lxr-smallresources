@@ -24,7 +24,7 @@ RegisterNetEvent('lxr-afkkick:server:KickForAFK', function()
     DropPlayer(src, 'You Have Been Kicked For Being AFK')
 end)
 
-exports['lxr-core']:CreateCallback('lxr-afkkick:server:GetPermissions', function(source, cb)
+exports['lxr-core']:CreateServerCallback('lxr-afkkick:server:GetPermissions', function(source, cb)
     local src = source
     local group = exports['lxr-core']:GetPermissions(src)
     cb(group)
