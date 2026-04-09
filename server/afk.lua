@@ -19,9 +19,9 @@
     © 2026 iBoss21 / The Lux Empire | wolves.land | All Rights Reserved
 ]]
 
-
+RegisterNetEvent('lxr-afkkick:server:KickForAFK', function()
     local src = source
-	DropPlayer(src, 'You Have Been Kicked For Being AFK')
+    DropPlayer(src, 'You Have Been Kicked For Being AFK')
 end)
 
 exports['lxr-core']:CreateCallback('lxr-afkkick:server:GetPermissions', function(source, cb)
